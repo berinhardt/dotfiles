@@ -1,0 +1,12 @@
+window {
+	background-position: center center;
+	background-size: cover;
+}
+box#body {
+    	color: black;
+    	margin: -400px 550px 0 -550px;
+}
+label#clock {
+	font-size: 128px;
+	margin-top: 850px;
+}

@@ -1,0 +1,135 @@
+// -*- mode: jsonc -*-
+[
+   {
+      "layer": "top", // Waybar at top layer
+      "reload_style_on_change": true,
+      "position": "top", // Waybar position (top|bottom|left|right)
+      "height": 30, // Waybar height (to be removed for auto height)
+      // "width": 1280, // Waybar width
+      "spacing": 1, // Gaps between modules (4px)
+      // Choose the order of the modules
+      "modules-left": [
+         "sway/workspaces",
+         "sway/mode",
+         "sway/window"
+      ],
+      "modules-center": [
+         "clock"
+      ],
+      "modules-right": [
+         "custom/btc",
+         "cpu",
+         "memory",
+         "disk",
+         "network",
+         "pulseaudio",
+         "tray"
+      ],
+      // Modules configuration
+      "sway/workspaces": {
+         "all-outputs": false,
+         "disable-scroll": true,
+         "disable-scroll-wraparound": true,
+         "format": "{icon}",
+         "format-icons": {
+            "1": "1  ",
+            "2": "2 ",
+            "3": "3 "
+         },
+         "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": []
+         }
+      },
+      "sway/mode": {
+         "format": "<span style=\"italic\">{}</span>"
+      },
+      "custom/btc": {
+         "exec": "curl 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT' | jq -r '.price ' | awk '{printf(\"%.02f\",$1)}'",
+         "interval": 300,
+         "format": " ${}",
+         "tootlip": true
+      },
+      "clock": {
+         "format": " 󰅐 {:%H:%M}",
+         "format-alt": "  {:%Y-%m-%d}",
+         "tooltip-format": "<span font_size='30pt'>{:%Y %B}</span>\n<tt><span font_size='24pt'>{calendar}</span></tt>",
+         "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+               "months": "<span color='#d3c6aa'><b>{}</b></span>",
+               "days": "<span color='#e67e80'><b>{}</b></span>",
+               "weeks": "<span color='#a7c080'><b>{}</b></span>",
+               "weekdays": "<span color='#7fbbb3'><b>{}</b></span>",
+               "today": "<span color='#dbbc7f'><b>{}</b></span>"
+            },
+            "actions": {
+               "on-click-right": "mode",
+               "on-click-forward": "tz_up",
+               "on-click-backward": "tz_down",
+               "on-scroll-up": "shift_up",
+               "on-scroll-down": "shift_down"
+            }
+         }
+      },
+      "cpu": {
+         "format": "󰍛 {usage}%",
+         "tooltip": true,
+         "interval": 1,
+         "on-click": "foot -e htop"
+      },
+      "memory": {
+         "format": "  {}%",
+         "interval": 1,
+         "on-click": "foot -e htop"
+      },
+      "network": {
+         "family": "ipv4",
+         "format-wifi": "󰖩  {essid} ({signalStrength}%)",
+         "format-ethernet": "󰈀  <span color='#f00'> {bandwidthUpBytes}</span> <span color='#0f0'> {bandwidthDownBytes}</span>",
+         "format-linked": "󰈀  {ifname} (No IP)",
+         "format-disconnected": "󰖪  Disconnected",
+         //         "format-alt": "{ifname}: {ipaddr}/{cidr}",
+         "tooltip-format": "{ifname}: {ipaddr}",
+         "on-click": "foot -e nmtui"
+      },
+      "pulseaudio": {
+         "format": "{icon} {volume}%",
+         "format-bluetooth": "󰂰 {volume}%",
+         "format-bluetooth-muted": "󰂲 {icon}",
+         "format-muted": "󰝟",
+         "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰥰",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰄝",
+            "car": "󰄋",
+            "default": [
+               "󰕿",
+               "󰖀",
+               "󰕾"
+            ]
+         },
+         "on-click": "pavucontrol",
+         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+      },
+      "disk": {
+         "interval": 30,
+         "format": "󰋊 {percentage_used}%",
+         "path": "/",
+         "on-click": "foot -e gdu /"
+      },
+      "tray": {
+         "icon-size": 18,
+         "spacing": 5
+      }
+   }
+]

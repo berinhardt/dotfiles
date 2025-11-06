@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+if (exists $ENV{"ROFI_RETV"} && $ENV{"ROFI_RETV"} == 1) {
+   `swaymsg "[con_id=$ENV{"ROFI_INFO"}]" focus`;
+   exit;
+}
+
+open(my $fh, '-|', "swaymsg -t get_tree -p") or die "$!";
+while(my $line = <$fh>) { 
+   if ($line =~ m/^\s+#([0-9]+): con "(.+)" \(.+app_id: "([^"]+)".+/) { 
+      my $icon = `fdfind $3 /usr/share/icons/Papirus-Dark/32x32 -1`;
+      my $name = $2;
+      my $id = $1;
+      $icon =~ s/^\s+|\s+$//g;
+      print $name."\0icon\x1f".$icon."\x1finfo\x1f".$id."\n";
+   }
+}

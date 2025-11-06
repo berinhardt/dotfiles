@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use POSIX qw(setsid);
+
+if (exists $ENV{"ROFI_RETV"} && $ENV{"ROFI_RETV"} == 1) {
+   if (fork() == 0) {
+      setsid();
+
+      close STDIN;
+      close STDOUT;
+      close STDERR;
+
+      exec("wtype", $ARGV[0]);
+   }
+   exit 0;
+}
+
+my $db = "/home/$ENV{'USER'}/.config/rofi/scripts/";
+if (exists $ENV{"EMOJI_DB"}) {
+   $db = $db.$ENV{"EMOJI_DB"};
+} else {
+   $db = $db."emoji.db";
+}
+
+open(my $fh, "<", $db) or die $!;
+while(my $line = <$fh>) {
+   $line =~ m/^(\S+) (.+)$/;
+   print $1."\0meta\x1f".$2."\n";
+}
+close($fh);
+

@@ -1,0 +1,94 @@
+* {
+   font-family: Bitstrom Wera Nerd Font;
+   font-size: 16px;
+   border: none;
+   border-radius: 0;
+}
+window#waybar {
+   background: #282828;
+   color: #ebdbb2;
+}
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#custom-btc, 
+#cpu, 
+#mode,
+#memory, 
+#disk,
+#network,
+#pulseaudio {
+   padding: 0 10px;
+   margin: 0 2px;
+}
+#workspaces button {
+   padding: 0 10px;
+   background: transparent;
+   margin: 0;
+   color: #a89984;
+}
+#workspaces button:hover {
+   background: #282828;
+   color: #ffffff;
+}
+#workspaces button.focused {
+   background: #282828;
+   color: #ebdbb2;
+   box-shadow: inset 0 -3px #ebdbb2;
+}
+#workspaces button.urgent {
+   background: #928374;
+   color: #fabd2f;
+}
+
+#mode {
+   color: #cc241d;
+   box-shadow: inset 0 -3px #cc241d;
+}
+
+#workspaces {
+   margin: 0 4px 0 0
+}
+#clock {
+   font-size: 20px
+}
+#custom-btc {
+   color: #fe8019;
+   box-shadow: inset 0 -3px #fe8019;
+}
+
+#cpu {
+   color: #b8bb26;
+   box-shadow: inset 0 -3px #b8bb26;
+}
+#memory {
+   color: #d3869b;
+   box-shadow: inset 0 -3px #d3869b;
+}
+#disk {
+   color: #8ec87c;
+   box-shadow: inset 0 -3px #8ec87c;
+}
+#network {
+   color: #83a598;
+   box-shadow: inset 0 -3px #83a598;
+}
+#network.disconnected, #pulseaudio.muted {
+   color: #fb4934;
+   box-shadow: inset 0 -3px #fb4934;
+}
+#pulseaudio {
+   color: #fabd2f;
+   box-shadow: inset 0 -3px #fabd2f;
+}
