@@ -13,13 +13,13 @@ return {
   },
   keys = {
     { "<leader>mc", ":CMakeStopExecutor<cr>:CMakeClean<cr>", desc = "CMake Clean" },
-    { "<leader>mC", ":CMakeStopExecutor<cr>:CMakeGenerate!<cr>", desc = "CMake Clean & Generate" },
+    { "<leader>mg", ":CMakeStopExecutor<cr>:CMakeGenerate<cr>", desc = "Generate" },
     { "<leader>mb", ":CMakeStopExecutor<cr>:CMakeBuild<cr>", desc = "CMake Build" },
-    { "<leader>mB", ":CMakeStopExecutor<cr>:CMakeBuild!<cr>", desc = "CMake Clean & Build" },
     { "<leader>mr", ":CMakeStopExecutor<cr>:CMakeRun<cr>", desc = "CMake Run" },
-    { "<leader>mR", ":CMakeStopExecutor<cr>:CMakeClean<cr>:CMakeRun<cr>", desc = "CMake Clean & Run" },
-    { "<leader>mt", ":CMakeStopExecutor<cr>:CMakeSelectBuildType<cr>", desc = "CMake Select Build Type" },
-    { "<leader>mT", ":CMakeStopExecutor<cr>:CMakeSelectBuildTarget<cr>", desc = "CMake Select Build Target" },
+    { "<leader>mt", ":CMakeStopExecutor<cr>:CMakeRunTest<cr>", desc = "CMake Run Tests" },
+    { "<leader>ms", ":CMakeStopExecutor<cr>:CMakeSelectBuildType<cr>", desc = "CMake Select Build Type" },
+    { "<leader>mS", ":CMakeStopExecutor<cr>:CMakeSelectBuildTarget<cr>", desc = "CMake Select Build Target" },
+    { "<leader>ml", ":CMakeStopExecutor<cr>:CMakeSelectLaunchTarget<cr>", desc = " CMake Select Launch Target" },
     { "<leader>mk", ":CMakeStopExecutor<cr>:CMakeSelectKit<cr>", desc = "CMake Select Build Kit" },
   },
 }

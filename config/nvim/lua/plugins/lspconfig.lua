@@ -5,8 +5,14 @@ return {
       servers = {
         clangd = {
           filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
-          settings = {
-            cmd = { "clangd", "--background-index" },
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--header-insertion=never",
+            "--completion-style=detailed",
+            "--function-arg-placeholders",
+            "--fallback-style=Google",
           },
         },
         jdtls = {},
