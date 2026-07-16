@@ -1,2 +1,0 @@
-#!/bin/bash
-/bin/env EMOJI_DB=nerd.db ~/.config/rofi/scripts/emoji $@

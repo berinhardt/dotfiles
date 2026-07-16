@@ -109,9 +109,9 @@ if ! shopt -oq posix; then
    elif [ -f /etc/bash_completion ]; then
       . /etc/bash_completion
    fi
+   . /usr/share/git/completion/git-prompt.sh
 fi
-
-alias sway-config='vi ~/.config/sway/config'
+alias hyprcfg="cd ~/.config/hypr/"
 export BOLD=1
 export UNDERLINE=4
 export BLACK=0
